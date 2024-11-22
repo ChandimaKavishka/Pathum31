@@ -1,0 +1,26 @@
+set terminal pdf
+set output "salary.pdf"
+set title "Employee data"
+set xlabel "No of days"
+set ylabel "Speed"
+plot "mydata.txt" using 1:2 with lines title "Speed km/h"
+
+
+
+set terminal pdf
+set output "AQI OUTPUT.pdf"
+set title "AQI CMOPARE"
+
+set boxwidth 0.4
+set style fill solid
+
+set xlabel "city"
+set ylabel "AQI"
+
+set grid ytics
+set xtics rotate by -45 font ",8" nomirror
+
+plot "mydata2.txt" using 2:xtic(1) title "AQI Last month" with boxes lc rgb "red", \
+	"mydata2.txt" using 2:xtic(1) title "AQI Current Month" with boxes lc rgb "blue"
+
+run command :- gnuplot muganucode.plt
